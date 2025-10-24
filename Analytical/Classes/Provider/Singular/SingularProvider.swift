@@ -219,7 +219,9 @@ final public class SingularProvider: NSObject, AnalyticalProvider, SKPaymentTran
         await actor.global(properties: properties, overwrite: overwrite)
     }
     
-    public func push(payload: Payload, event: Analytical.EventName?) { }
+    public func push(payload: Payload, event: Analytical.EventName?) {
+        Singular.handlePushNotification(payload.data.unwrapped())
+    }
     public func flush() { }
     public func reset() { }
     public func alias(userId: String, forId: String) { }
